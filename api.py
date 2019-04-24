@@ -32,7 +32,7 @@ def abort_if_todo_doesnt_exist(todo_id):
 
 
 class Todo(Resource):
-    """shows a single todo item and lets you delete a todo item"""
+    """shows a single todo item and lets you delete or change a todo item"""
     def get(self, todo_id):
         abort_if_todo_doesnt_exist(todo_id)
         return TODOS[todo_id]

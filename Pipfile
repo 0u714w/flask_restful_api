@@ -6,8 +6,9 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-python = "*"
+flask = "*"
 flask-restful = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.7"
