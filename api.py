@@ -56,11 +56,8 @@ class Todo(Resource):
             TODOS[todo_id].update({
                 'title': args['title']
             })
-        if args['last-updated']:
-            TODOS[todo_id].update({
-                'last-updated': str(datetime.now())
-            })
-        return "Recieved PUT request for ID {}".format(todo_id), 201
+        TODOS[todo_id].update({'last-updated': str(datetime.now())})
+        return "Received PUT request for ID {}".format(todo_id), 201
 
 
 class TodoList(Resource):
@@ -75,6 +72,7 @@ class TodoList(Resource):
         TODOS[todo_id] = {'title': args['title'],
                           'due-date': args['due-date'],
                           'completed': args['completed'],
+                          'completion-date': args['completion-date'],
                           'created': str(datetime.now()),
                           'last-updated': str(datetime.now())}
         return "Created new post with ID {}".format(todo_id), 201
@@ -86,7 +84,8 @@ api.add_resource(Todo, '/todos/<todo_id>')
 parser = reqparse.RequestParser()
 parser.add_argument('title')
 parser.add_argument('due-date')
-parser.add_argument('completed')
+parser.add_argument('completion-date')
+parser.add_argument('completed', type="bool", default=False)
 
 
 if __name__ == '__main__':
