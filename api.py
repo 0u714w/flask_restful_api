@@ -85,7 +85,7 @@ parser = reqparse.RequestParser()
 parser.add_argument('title')
 parser.add_argument('due-date')
 parser.add_argument('completion-date')
-parser.add_argument('completed', type="bool", default=False)
+parser.add_argument('completed')
 
 
 if __name__ == '__main__':
